@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# Build
+dist/
+tmp/
+out-repo/
+bazel-out/
+
+# Misc
+.DS_Store
+Thumbs.db
