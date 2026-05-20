@@ -6,9 +6,6 @@ import {
     HTTP_INTERCEPTORS
 } from '@angular/common/http';
 
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import {
@@ -56,10 +53,7 @@ import { HomeComponent } from './home';
             provide: HTTP_INTERCEPTORS,
             useClass: ErrorInterceptor,
             multi: true
-        },
-
-        // provider used to create fake backend
-        fakeBackendProvider
+        }
 
     ],
 

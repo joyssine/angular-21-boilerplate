@@ -56,19 +56,19 @@ export class AccountService {
     }
 
     register(account: Account) {
-        return this.http.post(`${baseUrl}/register`, account);
+        return this.http.post(`${baseUrl}/register`, account, { withCredentials: true });
     }
 
     verifyEmail(token: string) {
-        return this.http.post(`${baseUrl}/verify-email`, { token });
+        return this.http.post(`${baseUrl}/verify-email`, { token }, { withCredentials: true });
     }
 
     forgotPassword(email: string) {
-        return this.http.post(`${baseUrl}/forgot-password`, { email });
+        return this.http.post(`${baseUrl}/forgot-password`, { email }, { withCredentials: true });
     }
 
     validateResetToken(token: string) {
-        return this.http.post(`${baseUrl}/validate-reset-token`, { token });
+        return this.http.post(`${baseUrl}/validate-reset-token`, { token }, { withCredentials: true });
     }
 
     resetPassword(token: string, password: string, confirmPassword: string) {
@@ -76,23 +76,23 @@ export class AccountService {
             token,
             password,
             confirmPassword
-        });
+        }, { withCredentials: true });
     }
 
     getAll() {
-        return this.http.get<Account[]>(baseUrl);
+        return this.http.get<Account[]>(baseUrl, { withCredentials: true });
     }
 
     getById(id: string) {
-        return this.http.get<Account>(`${baseUrl}/${id}`);
+        return this.http.get<Account>(`${baseUrl}/${id}`, { withCredentials: true });
     }
 
     create(params: any) {
-        return this.http.post(baseUrl, params);
+        return this.http.post(baseUrl, params, { withCredentials: true });
     }
 
     update(id: string, params: any) {
-        return this.http.put(`${baseUrl}/${id}`, params)
+        return this.http.put(`${baseUrl}/${id}`, params, { withCredentials: true })
             .pipe(map((account: any) => {
 
                 // update the current account if it was updated
@@ -108,7 +108,7 @@ export class AccountService {
     }
 
     delete(id: string) {
-        return this.http.delete(`${baseUrl}/${id}`)
+        return this.http.delete(`${baseUrl}/${id}`, { withCredentials: true })
             .pipe(finalize(() => {
 
                 // auto logout if the logged in account was deleted

@@ -2,11 +2,11 @@
 
     <!-- main nav -->
     <nav
-        class="navbar navbar-expand navbar-dark bg-dark px-3"
+        class="navbar navbar-expand navbar-light px-3"
         *ngIf="account"
     >
 
-        <div class="navbar-nav">
+        <div class="navbar-nav w-100">
 
             <a
                 routerLink="/"
@@ -36,7 +36,7 @@
 
             <button
                 (click)="logout()"
-                class="btn btn-link nav-item nav-link"
+                class="btn btn-link nav-item nav-link ms-auto text-danger text-decoration-none"
             >
                 Logout
             </button>

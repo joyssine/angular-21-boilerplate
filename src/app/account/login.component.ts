@@ -12,7 +12,7 @@ import { AccountService, AlertService } from '@app/_services';
 export class LoginComponent implements OnInit {
 
     form!: FormGroup;
-    submitting = false;
+    loading = false;
     submitted = false;
 
     constructor(
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this.submitting = true;
+        this.loading = true;
         this.cdr.detectChanges();
 
         this.accountService.login(this.f['email'].value, this.f['password'].value)
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
                 error: error => {
                     setTimeout(() => {
                         this.alertService.error(error);
-                        this.submitting = false;
+                        this.loading = false;
                         this.cdr.detectChanges();
                     });
                 }
