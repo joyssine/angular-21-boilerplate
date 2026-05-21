@@ -14,9 +14,9 @@ export class LayoutComponent {
         private router: Router,
         private accountService: AccountService
     ) {
-
-        // redirect to home if already logged in
-        if (this.accountService.accountValue) {
+        // redirect to home if already logged in, except for verify-email and reset-password pages
+        const isCriticalFlow = this.router.url.includes('verify-email') || this.router.url.includes('reset-password');
+        if (this.accountService.accountValue && !isCriticalFlow) {
             this.router.navigate(['/']);
         }
     }

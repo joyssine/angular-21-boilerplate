@@ -12,8 +12,9 @@ import { AccountService, AlertService } from '@app/_services';
 export class LoginComponent implements OnInit {
 
     form!: FormGroup;
-    loading = false;
+    submitting = false;
     submitted = false;
+
 
     constructor(
         private formBuilder: FormBuilder,
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.form = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
+           email: ['', Validators.required],
             password: ['', Validators.required]
         });
     }
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this.loading = true;
+        this.submitting = true;
         this.cdr.detectChanges();
 
         this.accountService.login(this.f['email'].value, this.f['password'].value)
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
                 error: error => {
                     setTimeout(() => {
                         this.alertService.error(error);
-                        this.loading = false;
+                        this.submitting = false;
                         this.cdr.detectChanges();
                     });
                 }

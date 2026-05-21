@@ -34,6 +34,9 @@ export class VerifyEmailComponent implements OnInit {
             replaceUrl: true
         });
 
+        // logout to ensure no active session interferes with verification
+        this.accountService.logout(false);
+
         this.accountService.verifyEmail(token)
             .pipe(first())
             .subscribe({
