@@ -1,6 +1,6 @@
 export const environment = {
 
     production: true,
-    apiUrl: 'http://localhost:54072'
+    apiUrl: 'https://angular-21-boilerplate-gwp7.onrender.com'
 
 };
